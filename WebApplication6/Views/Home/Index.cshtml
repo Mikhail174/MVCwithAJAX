@@ -1,0 +1,68 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+
+
+<div class="container">
+    <br/>
+    <br/>
+    <a class="btn btn-success" style="margin:12px;"><span class="glyphicon glyphicon-plus">Add New</span></a>
+    <table id="example" class="table table-striped table-bordered" style="width:100%">
+        <thead>
+            <tr>
+                <th>title</th>
+                <th>authors</th>
+                <th>Pages</th>
+                <th>pub_name</th>
+                <th>pub_date</th>
+                <th>logo</th>
+            </tr>
+        </thead>
+        </table>
+
+    <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+
+    @section scripts {
+
+
+        <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"> </script>
+        <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+        <script>
+
+            $(document).ready(function () {
+
+
+                $("#example").DataTable({
+
+                    "ajax": {
+
+                        "type": "GET",
+                        "url": @Url.Action("getdata","Home"),
+                        "datatype": "JSON",
+                    },
+                    "columns": [
+
+                        { "data": "title" },
+                        { "data": "authors" },
+                        { "data": "Pages" },
+                        { "data": "pub_name" },
+                        { "data": "pub_date" },
+                        { "data": "logo" },
+                    ]
+
+
+
+                })
+
+
+            });
+
+
+        </script>
+
+        }
+
+
+
+</div>
